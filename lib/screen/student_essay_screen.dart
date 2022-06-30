@@ -23,6 +23,7 @@ class _StudentEssayScreenState extends State<StudentEssayScreen> {
           children: [
             MaterialButton(
               onPressed: () {
+                controller.pickFile();
               },
               child: const Text(
                 "Choose A File",

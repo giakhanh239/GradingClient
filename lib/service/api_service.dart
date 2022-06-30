@@ -8,7 +8,7 @@ class ApiService extends DioMixin {
 
   ApiService._internal() {
     options = BaseOptions(
-       baseUrl: "http://192.168.1.4:8080/",
+       baseUrl: "http://192.168.43.184:8080/",
       // connectTimeout: Environment.apiTimeout,
     );
     interceptors.addAll([AppInterceptor(), PrettyDioLogger()]);

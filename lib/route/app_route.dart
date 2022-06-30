@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:grading_client/root_screen.dart';
 import 'package:grading_client/screen/splash_screen.dart';
 import 'package:grading_client/screen/student_essay_screen.dart';
+import 'package:grading_client/screen/student_multiple_choice_screen.dart';
 import 'package:grading_client/screen/student_screen.dart';
 import 'package:grading_client/screen/teacher_screen.dart';
 
@@ -13,6 +14,7 @@ class RouteName {
   static const String teacher = "/teacher";
   static const String student = "/student";
   static const String studentEssay = "/student-essay";
+  static const String studentMultipleChoice = "/student-multiple-choice";
 }
 
 class AppRoutes {
@@ -22,6 +24,7 @@ class AppRoutes {
     RouteName.teacher: ()=> const TeacherScreen(),
     RouteName.student: ()=> const StudentScreen(),
     RouteName.studentEssay:()=>const StudentEssayScreen(),
+    RouteName.studentMultipleChoice: ()=> const StudentMultipleChoiceScreen(),
   };
 
   static final bindings = <String, List<Bindings> Function()>{

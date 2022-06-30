@@ -2,10 +2,10 @@ class Student {
   int? id;
   String? name;
   String? studentId;
-  int? chuyenCan;
-  int? baiTap;
-  int? thucHanh;
-  int? cuoiKy;
+  double? chuyenCan;
+  double? baiTap;
+  double? thucHanh;
+  double? cuoiKy;
 
   Student(
       {this.id,

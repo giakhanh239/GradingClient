@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -46,7 +45,7 @@ class _StudentScreenState extends State<StudentScreen> {
                       onPressed: () {
                         if(textController.text.isNotEmpty) {
                           controller.isStudentQualify(
-                              int.parse(textController.text));
+                              int.parse(textController.text),0);
                         }
                       },
                       child: const Text(
@@ -59,6 +58,11 @@ class _StudentScreenState extends State<StudentScreen> {
                   ),
                   MaterialButton(
                     onPressed: () {
+                      if(textController.text.isNotEmpty) {
+                        controller.isStudentQualify(
+                            int.parse(textController.text),1);
+
+                      }
                     },
                     child: const Text(
                       "Multiple Choice",

@@ -1,8 +1,15 @@
-import 'package:get/get.dart';
+import 'dart:io';
+
+import 'package:dio/dio.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:get/get.dart' hide FormData;
+import 'package:grading_client/dialog/dialog_helper.dart';
 import 'package:grading_client/service/api_service.dart';
 import 'package:grading_client/service/handle_exception.dart';
+import 'package:path_provider/path_provider.dart';
 
 class StudentEssayController extends GetxController {
+  File file = File("");
   void uploadFile() async {
     try {
       // FormData formData = new FormData({
@@ -12,12 +19,15 @@ class StudentEssayController extends GetxController {
       // });
 
       final data = {
-        "file": "",
-        "type": "",
-        "student_id": "1",
+        "file": file.readAsBytesSync(),
+        "type": "tl",
+        "student_id": 1,
       };
-      await ApiService().post("/asignment/upload/db", data: data);
+      DialogHelper.showLoading();
+      await ApiService().post("/asignment/upload/db", data:FormData.fromMap(data) );
+      DialogHelper.hideDialog();
     } catch (e) {
+      DialogHelper.hideDialog();
       handleException(e);
     }
     // var stream = new http.ByteStream(DelegatingStream.typed(imageFile.openRead()));
@@ -37,4 +47,13 @@ class StudentEssayController extends GetxController {
     //   print(value);
     // });
   }
+  void pickFile()async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles();
+
+    if (result != null) {
+     file = File(result.files.single.path ?? "");
+    } else {
+      // User canceled the picker
+    }
+}
 }
